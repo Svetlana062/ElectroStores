@@ -113,8 +113,7 @@ class ViewTests(APITestCase):
 
     def test_unauthenticated_access_denied(self):
         """Тестирует отказ в доступе для неаутентифицированного пользователя. Выходит
-        из системы и отправляет GET-запрос на /api/nodes/, ожидая статус 401 Unauthorized.
-        """
+        из системы и отправляет GET-запрос на /api/nodes/, ожидая статус 401 Unauthorized."""
         # Клиент аутентифицирован в setUp, так что logout делает его неаутентифицированным
         self.client.logout()
 

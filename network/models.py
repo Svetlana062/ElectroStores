@@ -76,7 +76,7 @@ class Node(models.Model):
             supplier_level = self.supplier.get_hierarchy_level()
             self_level = self.get_hierarchy_level()
 
-            # Исправление: Добавлена проверка на None перед сравнением
+            # Добавлена проверка на None перед сравнением
             if (
                 supplier_level is not None
                 and self_level is not None
@@ -99,12 +99,9 @@ class Node(models.Model):
             current = current.supplier
 
     def get_hierarchy_level(self):
-        """
-        Возвращает уровень в иерархии на основе цепочки поставщиков.
-
-        Завод всегда уровень 0 (если supplier=None). Для остальных — минимальное расстояние до завода по supplier.
-        Если цепочка оборвана (нет пути к заводу) или цикл, возвращает None.
-        """
+        """ Возвращает уровень в иерархии на основе цепочки поставщиков. Завод всегда уровень 0
+        (если supplier=None). Для остальных — минимальное расстояние до завода по supplier.
+        Если цепочка оборвана (нет пути к заводу) или цикл, возвращает None."""
         if self.supplier is None:
             return 0  # Завод
         level = 0
